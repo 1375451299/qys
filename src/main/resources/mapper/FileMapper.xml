@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.qys.dao.FileMapper" >
+  <resultMap id="BaseResultMap" type="com.example.qys.entity.File" >
+    <id column="uuid" property="uuid" jdbcType="INTEGER" />
+    <result column="size" property="size" jdbcType="DOUBLE" />
+    <result column="initial_name" property="initialName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uuid, size, initial_name, create_time, address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from file
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from file
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.qys.entity.File" >
+    insert into file (uuid, size, initial_name, 
+      create_time, address)
+    values (#{uuid,jdbcType=INTEGER}, #{size,jdbcType=DOUBLE}, #{initialName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.qys.entity.File" >
+    insert into file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="initialName != null" >
+        initial_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=INTEGER},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="initialName != null" >
+        #{initialName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.qys.entity.File" >
+    update file
+    <set >
+      <if test="size != null" >
+        size = #{size,jdbcType=DOUBLE},
+      </if>
+      <if test="initialName != null" >
+        initial_name = #{initialName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.qys.entity.File" >
+    update file
+    set size = #{size,jdbcType=DOUBLE},
+      initial_name = #{initialName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+</mapper>
