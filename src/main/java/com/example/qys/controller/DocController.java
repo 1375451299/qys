@@ -1,9 +1,15 @@
 package com.example.qys.controller;
 
 import com.example.qys.config.GlobalResult;
+import com.example.qys.service.DocService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 /**
  *  @author: Zhong Linfeng
@@ -15,9 +21,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/file")
 @CrossOrigin
-public class fileController {
+public class DocController {
 
-
+    @Autowired
+    private DocService docService;
     /**
     * @Description
     * @Author  Zhong Linfeng
@@ -30,25 +37,21 @@ public class fileController {
 
     @PostMapping()
     @ApiOperation(value = "上传文件")
-    public GlobalResult uploadFile() {
-
-        GlobalResult result = GlobalResult.build(200, "初始化成功",null);
-        return result;
+    public GlobalResult uploadFile(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
+        return docService.uploadFile(file,request);
     }
 
     @GetMapping()
     @ApiOperation(value = "下载文件")
-    public GlobalResult downloadFile(@RequestParam int uuid) {
-
-        GlobalResult result = GlobalResult.build(200, "初始化成功",null);
-        return result;
+    public GlobalResult downloadFile(@RequestParam String uuid) throws IOException {
+        return docService.downloadFile(uuid);
     }
 
     @GetMapping("/msg")
     @ApiOperation(value = "获取文件元数据")
-    public GlobalResult getFlileData() {
+    public GlobalResult getFlileData(@RequestParam String uuid) {
 
         GlobalResult result = GlobalResult.build(200, "初始化成功",null);
-        return result;
+        return docService.getFlileData(uuid);
     }
 }

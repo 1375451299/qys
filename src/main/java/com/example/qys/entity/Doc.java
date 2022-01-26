@@ -2,8 +2,8 @@ package com.example.qys.entity;
 
 import java.util.Date;
 
-public class File {
-    private Integer uuid;
+public class Doc {
+    private String uuid;
 
     private Double size;
 
@@ -13,12 +13,14 @@ public class File {
 
     private String address;
 
-    public Integer getUuid() {
+    private String type;
+
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(Integer uuid) {
-        this.uuid = uuid;
+    public void setUuid(String uuid) {
+        this.uuid = uuid == null ? null : uuid.trim();
     }
 
     public Double getSize() {
@@ -51,5 +53,13 @@ public class File {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 }

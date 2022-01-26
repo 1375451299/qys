@@ -11,6 +11,13 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   redis:
     host: localhost
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+mybatis:
+  type-aliases-package: com.example.qys.entity
+  mapper-locations: classpath*:mapper/*Mapper.xml
