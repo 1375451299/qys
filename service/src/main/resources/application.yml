@@ -1,0 +1,23 @@
+
+server:
+  port: 8081
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/qys?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: localhost
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+mybatis:
+  type-aliases-package: com.example.qys.entity
+  mapper-locations: classpath*:mapper/*Mapper.xml

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clients/clients.iml" filepath="$PROJECT_DIR$/clients/clients.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service/qys.iml" filepath="$PROJECT_DIR$/service/qys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/契约锁笔试.iml" filepath="$PROJECT_DIR$/.idea/契约锁笔试.iml" />
+      <module fileurl="file://$PROJECT_DIR$/客户端/客户端.iml" filepath="$PROJECT_DIR$/客户端/客户端.iml" />
+    </modules>
+  </component>
+</project>
